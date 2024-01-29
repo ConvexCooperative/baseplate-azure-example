@@ -13,3 +13,4 @@ stages:
         steps:
           - script: |
               echo "Hello"
+              npm install
