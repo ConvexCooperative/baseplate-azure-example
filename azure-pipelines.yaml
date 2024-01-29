@@ -26,4 +26,4 @@ stages:
           - download: current
             artifact: dist
           - script: |
-              find dist
+              find .
