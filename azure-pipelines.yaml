@@ -27,5 +27,5 @@ stages:
           - download: current
             artifact: dist
           - script: |
-              pwd
-              find ../dist
+              npm i -g @baseplate-sdk/cli
+              baseplate deploy test --environment dev --diri ../dist --entry joel-test.js --autoVersion
