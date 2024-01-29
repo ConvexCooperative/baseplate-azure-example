@@ -19,7 +19,8 @@ stages:
               npm test
           - publish: dist
             artifact: dist
-  - stage: DeployDev
+
+  - stage: Deploy0
     displayName: Deploy to dev
     dependsOn: Build
     jobs:
@@ -31,9 +32,10 @@ stages:
               baseplate deploy test --environment dev --dir ../dist --entry joel-test.js --autoVersion
             env:
               BASEPLATE_TOKEN: $(BASEPLATE_TOKEN)
-  - stage: DeployStage
+
+  - stage: Deploy1
     displayName: Deploy to stage
-    dependsOn: DeployDev
+    dependsOn: Deploy0
     jobs:
       - job: Deploy
         steps:
@@ -41,5 +43,31 @@ stages:
             artifact: dist
           - script: |
               baseplate deploy test --environment stage --dir ../dist --entry joel-test.js --autoVersion
+            env:
+              BASEPLATE_TOKEN: $(BASEPLATE_TOKEN)
+
+  - stage: Deploy2
+    displayName: Deploy to test
+    dependsOn: Deploy1
+    jobs:
+      - job: Deploy
+        steps:
+          - download: current
+            artifact: dist
+          - script: |
+              baseplate deploy test --environment test --dir ../dist --entry joel-test.js --autoVersion
+            env:
+              BASEPLATE_TOKEN: $(BASEPLATE_TOKEN)
+
+  - stage: Deploy3
+    displayName: Deploy to prod
+    dependsOn: Deploy2
+    jobs:
+      - job: Deploy
+        steps:
+          - download: current
+            artifact: dist
+          - script: |
+              baseplate deploy test --environment prod --dir ../dist --entry joel-test.js --autoVersion
             env:
               BASEPLATE_TOKEN: $(BASEPLATE_TOKEN)
