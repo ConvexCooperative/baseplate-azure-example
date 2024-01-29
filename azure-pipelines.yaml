@@ -31,3 +31,15 @@ stages:
               baseplate deploy test --environment dev --dir ../dist --entry joel-test.js --autoVersion
             env:
               BASEPLATE_TOKEN: $(BASEPLATE_TOKEN)
+  - stage: DeployStage
+    displayName: Deploy to stage
+    dependsOn: DeployDev
+    jobs:
+      - job: Deploy
+        steps:
+          - download: current
+            artifact: dist
+          - script: |
+              baseplate deploy test --environment stage --dir ../dist --entry joel-test.js --autoVersion
+            env:
+              BASEPLATE_TOKEN: $(BASEPLATE_TOKEN)
