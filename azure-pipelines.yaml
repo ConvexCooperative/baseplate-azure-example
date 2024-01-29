@@ -11,11 +11,11 @@ stages:
     jobs:
       - job: Install
         steps:
-          - publish: dist
-            artifact: dist
-            seal: true
-            script: |
+          - script: |
               echo "Hello"
               npm install
               npm run build
               npm test
+          - publish: dist
+            artifact: dist
+            seal: true
