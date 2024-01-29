@@ -24,6 +24,5 @@ stages:
         steps:
           - download: current
             artifact: dist
-            path: dist
           - script: |
               find dist
