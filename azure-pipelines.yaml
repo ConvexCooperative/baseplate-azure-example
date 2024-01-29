@@ -12,7 +12,8 @@ stages:
       - job: Install
         steps:
           - script: |
-              echo "Hello"
+              npm i -g @baseplate-sdk/cli
+          - script: |
               npm install
               npm run build
               npm test
@@ -27,7 +28,6 @@ stages:
           - download: current
             artifact: dist
           - script: |
-              npm i -g @baseplate-sdk/cli
               baseplate deploy test --environment dev --dir ../dist --entry joel-test.js --autoVersion
             env:
               BASEPLATE_TOKEN: $(BASEPLATE_TOKEN)
