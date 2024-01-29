@@ -1,8 +1,15 @@
-- Pipeline
-  - Build and Test
-    - Install
-      - npm install
-    - Build
-      - npm run build
-    - Test
-      - npm test
+trigger:
+  branches:
+    include:
+      - *
+
+stages:
+  - stage: Build
+    displayName: Build and test
+    jobs:
+      - job: Install
+        steps:
+          - script: |
+              npm install
+              npm run build
+              npm test
