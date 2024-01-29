@@ -28,4 +28,4 @@ stages:
             artifact: dist
           - script: |
               pwd
-              find .
+              find ../dist
