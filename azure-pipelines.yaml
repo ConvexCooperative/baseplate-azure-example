@@ -20,10 +20,12 @@ stages:
             artifact: dist
   - stage: DeployDev
     displayName: Deploy to dev
+    dependsOn: Build
     jobs:
       - job: Deploy
         steps:
           - download: current
             artifact: dist
           - script: |
+              pwd
               find .
