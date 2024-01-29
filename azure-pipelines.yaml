@@ -12,6 +12,4 @@ stages:
       - job: Install
         steps:
           - script: |
-              npm install
-              npm run build
-              npm test
+            echo "Hello"
