@@ -18,7 +18,8 @@ stages:
               npm test
           - publish: dist
             artifact: dist
-  - stage: Deploy dev
+  - stage: DeployDev
+    displayName: Deploy to dev
     jobs:
       - job: Deploy
         steps:
