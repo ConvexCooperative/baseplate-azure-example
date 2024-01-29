@@ -1,3 +1,5 @@
+pool: Default
+
 trigger:
   branches:
     include:
