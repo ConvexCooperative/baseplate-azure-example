@@ -18,4 +18,3 @@ stages:
               npm test
           - publish: dist
             artifact: dist
-            seal: true
