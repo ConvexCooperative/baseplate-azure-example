@@ -27,4 +27,4 @@ stages:
           #   artifact: dist
           #   path: dist
           - script: |
-            find dist
+              find dist
