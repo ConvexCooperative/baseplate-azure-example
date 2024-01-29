@@ -12,4 +12,4 @@ stages:
       - job: Install
         steps:
           - script: |
-            echo "Hello"
+              echo "Hello"
