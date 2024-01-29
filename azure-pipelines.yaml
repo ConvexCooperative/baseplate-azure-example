@@ -27,7 +27,7 @@ stages:
           - download: current
             artifact: dist
           - script: |
-              npm i -g @baseplate-sdk/cli
-              baseplate deploy test --environment dev --dir ../dist --entry joel-test.js --autoVersion
+              echo $(BASEPLATE_TOKEN)
+              npx @baseplate-sdk/cli deploy test --environment dev --dir ../dist --entry joel-test.js --autoVersion
             env:
               BASEPLATE_TOKEN: $(BASEPLATE_TOKEN)
