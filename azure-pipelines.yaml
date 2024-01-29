@@ -20,11 +20,10 @@ stages:
             artifact: dist
   - stage: Deploy dev
     jobs:
-      - deployment: dev
-        job: Deploy
+      - job: Deploy
         steps:
-          # - download: current
-          #   artifact: dist
-          #   path: dist
+          - download: current
+            artifact: dist
+            path: dist
           - script: |
               find dist
