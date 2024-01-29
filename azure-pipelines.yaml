@@ -1,0 +1,8 @@
+- Pipeline
+  - Build and Test
+    - Install
+      - npm install
+    - Build
+      - npm run build
+    - Test
+      - npm test
